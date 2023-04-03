@@ -1,0 +1,77 @@
+<?php
+
+return [
+    App\Events\Event::class => [
+        '__serialize',
+        '__unserialize',
+        'getPropertyValue',
+        'getSerializedPropertyValue',
+        'getRestoredPropertyValue',
+        'restoreCollection',
+        'restoreModel',
+        'getQueryForModelRestoration',
+    ],
+    App\Exceptions\Handler::class => [
+        'report',
+        'render',
+    ],
+    App\Http\Controllers\ExampleController::class => [
+        '__invoke',
+    ],
+    App\Http\Middleware\Authenticate::class => [
+        'handle',
+    ],
+    App\Http\Middleware\ExampleMiddleware::class => [
+        'handle',
+    ],
+    App\Jobs\ExampleJob::class => [
+        'handle',
+    ],
+    App\Jobs\Job::class => [
+        'attempts',
+        'delete',
+        'fail',
+        'release',
+        'setJob',
+        'onConnection',
+        'onQueue',
+        'allOnConnection',
+        'allOnQueue',
+        'delay',
+        'afterCommit',
+        'beforeCommit',
+        'through',
+        'chain',
+        'prependToChain',
+        'appendToChain',
+        'serializeJob',
+        'dispatchNextJobInChain',
+        'invokeChainCatchCallbacks',
+        '__serialize',
+        '__unserialize',
+        'getPropertyValue',
+        'getSerializedPropertyValue',
+        'getRestoredPropertyValue',
+        'restoreCollection',
+        'restoreModel',
+        'getQueryForModelRestoration',
+    ],
+    App\Listeners\ExampleListener::class => [
+        'handle',
+    ],
+    App\Models\User::class => [
+        'getAuthIdentifierName',
+        'getAuthIdentifier',
+        'getAuthIdentifierForBroadcasting',
+        'getAuthPassword',
+        'getRememberToken',
+        'setRememberToken',
+        'getRememberTokenName',
+        'can',
+        'cant',
+        'cannot',
+        'factory',
+        'newFactory',
+    ],
+
+];
