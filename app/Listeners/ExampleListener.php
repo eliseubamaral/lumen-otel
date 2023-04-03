@@ -2,30 +2,30 @@
 
 namespace App\Listeners;
 
-use App\Events\ExampleEvent;
+use App\Events\MyEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use OpenTelemetry\API\Metrics\MeterProviderInterface;
+use OpenTelemetry\SDK\Metrics\MetricReaderInterface;
 
 class ExampleListener
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(MeterProviderInterface $meterProvider, private MetricReaderInterface $metricReader)
     {
-        //
+        // substitua .microservico.contexto para .<nome_do_seu_microservico>.<funcionalidade>
+        $meter = $meterProvider->getMeter('otel.picpay.microservico.contexto');
+
+        $this->metricTeste = $meter->createCounter(
+            'Teste', null, 'Description Metrica de teste'
+        );
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  \App\Events\ExampleEvent  $event
-     * @return void
-     */
-    public function handle(ExampleEvent $event)
+    public function handle(MyEvent $event)
     {
-        //
+        $this->metricTeste->add(1, [
+            'label' => 'Label teste',
+        ]);
+
+        $this->metricReader->collect();
     }
 }

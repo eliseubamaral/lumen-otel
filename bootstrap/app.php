@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+ $app->withFacades();
 
 // $app->withEloquent();
 
@@ -72,6 +72,8 @@ $app->configure('app');
 |
 */
 
+$app->middleware(\Picpay\Otel\Middlewares\OtelSpanRootMiddleware::class);
+
 // $app->middleware([
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
@@ -91,9 +93,13 @@ $app->configure('app');
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AuthServiceProvider::class);
+ $app->register(App\Providers\EventServiceProvider::class);
+
+$app->register(\Picpay\Otel\OtelGeneratorProvider::class);
+$app->register(\Picpay\Otel\OtelServiceProvider::class);
+$app->register(\Picpay\Otel\OtelInstrumentationProvider::class);
 
 /*
 |--------------------------------------------------------------------------

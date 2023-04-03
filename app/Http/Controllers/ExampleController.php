@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MyEvent;
+use Illuminate\Support\Facades\Event;
+
 class ExampleController extends Controller
 {
     /**
@@ -12,6 +15,11 @@ class ExampleController extends Controller
     public function __construct()
     {
         //
+    }
+
+    public function __invoke()
+    {
+        Event::dispatch(new MyEvent());
     }
 
     //

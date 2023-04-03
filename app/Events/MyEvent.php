@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-class ExampleEvent extends Event
+class MyEvent extends Event
 {
     /**
      * Create a new event instance.
