@@ -23,7 +23,7 @@ class ExampleListener
     public function handle(MyEvent $event)
     {
         $this->metricTeste->add(1, [
-            'label' => 'Label teste',
+            'label' => uniqid(),
         ]);
 
         $this->metricReader->collect();

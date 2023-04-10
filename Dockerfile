@@ -15,6 +15,11 @@ RUN apk add --no-cache \
     zip \
     && rm -rf /var/cache/apk/*
 
+
+RUN pecl install xdebug-3.1.6 \
+    && docker-php-ext-enable xdebug \
+    && echo "opcache.validate_timestamps=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini;
+
 # This allows beta pecl install
 RUN pear config-set preferred_state beta \
     && pecl install opentelemetry \
