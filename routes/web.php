@@ -13,6 +13,8 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+
+use Prometheus\CollectorRegistry;
+use Prometheus\Storage\APCng;
+
+$router->get('/', ExampleController::class);

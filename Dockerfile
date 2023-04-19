@@ -31,8 +31,8 @@ RUN docker-php-ext-install pdo mysqli pdo_mysql mbstring && \
 RUN pecl config-set preferred_state beta \
     && pecl install opentelemetry \
     && pecl config-set preferred_state stable \
-    && pecl install redis \
-    && docker-php-ext-enable redis opentelemetry
+    && pecl install apcu \
+    && docker-php-ext-enable opentelemetry apcu
 
 #COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 RUN composer self-update --2
