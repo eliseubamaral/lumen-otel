@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+
+  api.otel.dev:
+    container_name: api.otel.dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        COMPOSER_AUTH: ${COMPOSER_AUTH}
+    volumes:
+      - ./:/app
+    ports:
+      - "8699:80"
+    networks:
+      - bubble
+
+
+networks:
+  bubble:
+    external: true
